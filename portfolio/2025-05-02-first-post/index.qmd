@@ -1,0 +1,19 @@
+---
+title: "Advanced Visualizations"
+description: "blog post description (appears underneath the title in smaller text) which is included on the listing page"
+author:
+  - name: Lucas Kantorowski
+    url: https://lkantoro.github.io/
+    orcid: 0000-0002-5300-3075
+    affiliation: Master of Science student in Statistics @ California Polytechnic State University
+    affiliation-url: https://ucsb-meds.github.io/ 
+date: 05-05-2025
+categories: [Quarto, R] # self-defined categories
+citation: 
+  url: https://lkantoro.github.io/posts/2025-05-02-my-blog-post/ 
+image: preview-image.png
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+---
+
+
+

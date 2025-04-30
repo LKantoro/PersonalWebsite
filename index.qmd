@@ -1,11 +1,13 @@
 ---
-title: "PersonalWebsite"
+title: "Lucas Kantorowski"
+
+about:
+  template: jolla
+  links: 
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/lucas-kantorowski/
+    - text: Email
+      href: lkantoro@calpoly.edu
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```
+this is placeholder text about me

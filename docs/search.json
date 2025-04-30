@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "portfolio.html",
+    "href": "portfolio.html",
+    "title": "My Blog",
+    "section": "",
+    "text": "Advanced Visualizations\n\n\n\nQuarto\n\nR\n\n\n\nblog post description (appears underneath the title in smaller text) which is included on the listing page\n\n\n\nLucas Kantorowski\n\n\nMay 5, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto Dashboards (Static)\n\n\n\nQuarto\n\nR\n\nMEDS\n\n\n\nblog post description (appears underneath the title in smaller text) which is included on the listing page\n\n\n\nLucas Kantorowski\n\n\nMay 5, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto Dashboards (Dynamic)\n\n\n\nQuarto\n\nR\n\nMEDS\n\n\n\nblog post description (appears underneath the title in smaller text) which is included on the listing page\n\n\n\nLucas Kantorowski\n\n\nMay 5, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "portfolio/2025-05-02-second-post/index.html",
+    "href": "portfolio/2025-05-02-second-post/index.html",
+    "title": "Quarto Dashboards (Static)",
+    "section": "",
+    "text": "CitationBibTeX citation:@online{kantorowski2025,\n  author = {Kantorowski, Lucas},\n  title = {Quarto {Dashboards} {(Static)}},\n  date = {2025-05-05},\n  url = {https://samanthacsik.github.io/posts/2025-05-02-my-blog-post/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nKantorowski, Lucas. 2025. “Quarto Dashboards (Static).” May\n5, 2025. https://samanthacsik.github.io/posts/2025-05-02-my-blog-post/."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Lucas Kantorowski",
+    "section": "",
+    "text": "this is placeholder text about me"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "portfolio/2025-05-02-first-post/index.html",
+    "href": "portfolio/2025-05-02-first-post/index.html",
+    "title": "Advanced Visualizations",
+    "section": "",
+    "text": "CitationBibTeX citation:@online{kantorowski2025,\n  author = {Kantorowski, Lucas},\n  title = {Advanced {Visualizations}},\n  date = {2025-05-05},\n  url = {https://lkantoro.github.io/posts/2025-05-02-my-blog-post/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nKantorowski, Lucas. 2025. “Advanced Visualizations.” May 5,\n2025. https://lkantoro.github.io/posts/2025-05-02-my-blog-post/."
+  },
+  {
+    "objectID": "portfolio/2025-05-02-third-post/index.html",
+    "href": "portfolio/2025-05-02-third-post/index.html",
+    "title": "Quarto Dashboards (Dynamic)",
+    "section": "",
+    "text": "CitationBibTeX citation:@online{kantorowski2025,\n  author = {Kantorowski, Lucas},\n  title = {Quarto {Dashboards} {(Dynamic)}},\n  date = {2025-05-05},\n  url = {https://samanthacsik.github.io/posts/2025-05-02-my-blog-post/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nKantorowski, Lucas. 2025. “Quarto Dashboards (Dynamic).”\nMay 5, 2025. https://samanthacsik.github.io/posts/2025-05-02-my-blog-post/."
+  }
+]
