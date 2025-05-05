@@ -6,8 +6,7 @@ about:
   links: 
     - text: LinkedIn
       href: https://www.linkedin.com/in/lucas-kantorowski/
-    - text: Email
-      href: lkantoro@calpoly.edu
+    - text: lkantoro@calpoly.edu
 ---
 
-this is placeholder text about me
+Welcome to my website!

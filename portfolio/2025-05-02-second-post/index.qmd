@@ -1,18 +1,30 @@
 ---
 title: "Quarto Dashboards (Static)"
-description: "blog post description (appears underneath the title in smaller text) which is included on the listing page"
+description: "My first dashboard created using R"
 author:
   - name: Lucas Kantorowski
-    url: https://samanthacsik.github.io/
+    url: https://lkantoro.github.io/PersonalWebsite/
     orcid: 0000-0002-5300-3075
-    affiliation: Master of Environmental Data Science Program @ The Bren School (UCSB) & The National Center for Ecological Analysis & Synthesis
-    affiliation-url: https://ucsb-meds.github.io/ 
+    affiliation: Master of Science Student in Statistics @ California Polytechnic State University
+    affiliation-url: https://www.calpoly.edu/ 
 date: 05-05-2025
-categories: [Quarto, R, MEDS] # self-defined categories
+categories: [Quarto, R] # self-defined categories
 citation: 
-  url: https://samanthacsik.github.io/posts/2025-05-02-my-blog-post/ 
-image: preview-image.png
+  url: https://lkantoro.github.io/PersonalWebsite/portfolio/2025-05-02-second-post/ 
+image: lab3.png
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
+Here is my first Quarto dashboard. It was created using the [Wellcome 2018 data](https://wellcome.org/reports/wellcome-global-monitor/2018). It contains two pages, each featuring value cards and graphs about the data.
+
+<center>
+
+<iframe src="https://lkantoro.quarto.pub/lucas-kantorowski/" frameborder="0" width="960" height="570" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+
+</iframe>
+
+</center>
+
+
+The github with the source code can be found [here](https://github.com/LKantoro/lab-3).
 

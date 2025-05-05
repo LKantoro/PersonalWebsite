@@ -1,19 +1,186 @@
 ---
 title: "Advanced Visualizations"
-description: "blog post description (appears underneath the title in smaller text) which is included on the listing page"
+description: "3 Advanced VIsualizations. One in base R, one using plotly, one using Leaflet"
 author:
   - name: Lucas Kantorowski
-    url: https://lkantoro.github.io/
+    url: https://lkantoro.github.io/PersonalWebsite/
     orcid: 0000-0002-5300-3075
-    affiliation: Master of Science student in Statistics @ California Polytechnic State University
-    affiliation-url: https://ucsb-meds.github.io/ 
+    affiliation: Master of Science Student in Statistics @ California Polytechnic State University
+    affiliation-url: https://www.calpoly.edu/ 
 date: 05-05-2025
 categories: [Quarto, R] # self-defined categories
 citation: 
-  url: https://lkantoro.github.io/posts/2025-05-02-my-blog-post/ 
-image: preview-image.png
+  url: https://lkantoro.github.io/PersonalWebsite/portfolio/2025-05-02-first-post/ 
+image: lab2.png
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
+Here are some advanced visualizations created using the [Wellcome 2018 data](https://wellcome.org/reports/wellcome-global-monitor/2018).
 
+```{r}
+#| echo: false
+#| warning: false
+#| label: load-packages
+#| message: false
+
+library(tidyverse)
+library(gt)
+library(dplyr)
+library(leaflet)
+library(sf)
+library(scales)
+library(plotly)
+library(readxl)
+library(bslib)
+library(bsicons)
+library(shiny)
+```
+
+```{r}
+#| echo: false
+#| label: read_in_data
+#| warning: false
+
+
+bottom30rate = read_csv(here::here("data", "bottom30rate.csv"))
+
+
+disease_part_of_science = read_csv(here::here("data", "disease_part_of_science.csv"))
+
+
+non_religious_trust_science = read_csv(here::here("data", "non_religious_trust_science.csv"))
+
+
+percent_effective = read_csv(here::here("data", "percent_effective.csv"))
+
+
+percent_effective_and_science = read_csv(here::here("data", "percent_effective_and_science.csv"))
+
+percent_science = read_csv(here::here("data", "percent_science.csv"))
+
+percent_trust = read_csv(here::here("data", "percent_trust.csv"))
+
+
+religious_trust_science = read_csv(here::here("data", "religious_trust_science.csv"))
+  
+science_college = read_csv(here::here("data", "science_college.csv"))
+
+science_primary_school = read_csv(here::here("data", "science_primary_school.csv"))
+
+
+science_secondary_school = read_csv(here::here("data", "science_secondary_school.csv"))
+
+top30rate = read_csv(here::here("data", "top30rate.csv"))
+
+want_to_know_more_disease = read_csv(here::here("data", "want_to_know_more_disease.csv")) 
+
+want_to_know_more_science = read_csv(here::here("data", "want_to_know_more_science.csv")) 
+  
+wgm2018_full_new2 = read_csv(here::here("data", "wgm2018_full_new2.csv")) 
+```
+
+This is a faceted dotplot of belief in vaccine effectiveness, faceted by global region.
+
+```{r}
+#| echo: false
+#| label: dotplot_1
+
+percent_effective %>% ggplot(aes(x = percent_eff, fill = map_region, 
+                              color = map_region)) +
+  geom_dotplot(binwidth = .01) + 
+  facet_grid(rows = vars(map_region), axis.labels = "margins") +
+  labs(x = "", y = "", fill = "",
+       title = 
+         "People Who 'Agreed' or 'Strongly Agreed' Vaccines Are Effective") +
+  geom_text(aes(x = .5, y = .8, label = map_region)) +
+  theme_light() + 
+  theme(strip.text = element_blank(), legend.position = "none", 
+        panel.grid.minor = element_blank(), panel.grid.major =element_blank(),
+        plot.title.position = "plot", axis.text.y = element_blank(), 
+        axis.ticks.y = element_blank()) +
+  scale_x_continuous(labels = scales::percent, limits = c(0,1))
+```
+
+```{r}
+#| echo: false
+#| label: chloropleth_prep_1
+
+#finding country geometries: https://r-graph-gallery.com/183-choropleth-map-with-leaflet.html
+
+#download.file(
+##  "https://raw.githubusercontent.com/holtzy/R-graph-gallery/master/DATA/world_shape_file.zip",
+#  destfile = "data/world_shape_file.zip"
+#)
+
+#system("unzip DATA/world_shape_file.zip")
+
+world_sf <- read_sf(paste0(
+  getwd(), "/data/world_shape_file/",
+  "TM_WORLD_BORDERS_SIMPL-0.3.shp"
+))
+
+
+chloroplethdf = right_join(percent_trust, world_sf, 
+                           by = join_by(country_name == NAME))
+
+chloroplethdf = st_sf(chloroplethdf)
+```
+
+Another visualization created used leaflet to create a chloropleth. It focuses on the distribution in trust in science throughtout the world.
+
+```{r}
+#| echo: false
+#| label: chloropleth1
+
+
+#creating bins for coloring
+pal = colorBin("Spectral", reverse = FALSE, domain = chloroplethdf$perc_trust,
+               bins = seq(0,100,length.out = 11))
+
+
+
+#| label: chloropleth
+
+
+leaflet(chloroplethdf) %>% addTiles() %>% 
+  addPolygons(fillColor = ~pal(perc_trust), weight = .2,  opacity = 1, 
+              color = 'black', 
+              popup = ~paste(country_name, ":",perc_trust, '%'), 
+              label = ~paste(country_name, ":",perc_trust, '%'), 
+              stroke = FALSE) %>%
+  addLegend(pal = pal, values = ~perc_trust, position = "bottomleft", 
+            title = "Percentage of Population Who Trust Scientists", 
+            labFormat = labelFormat(suffix = "%")) %>%
+  setView(lng = 0, lat = 0, zoom = 2) 
+```
+
+Finally, I used plotly to create a nice labelled scatterplot to demonstrate the relationship between the belief vaccines are effective, and trust in science.
+
+```{r}
+#| echo: false
+#| label: plotly_graph
+
+#scatterplot of vaccination rates vs science
+
+plot_ly(data = percent_effective_and_science, 
+        x = ~prop_sci, y = ~percent_eff, 
+        type = "scatter", mode = "markers", text = ~country_name, 
+        color = ~map_region.x) %>%
+  layout(plot_bgcolor='white',  
+         title = "Belief in Vaccine Effectiveness Versus Belief in 
+         Vaccine Safety in Different Countries",
+    xaxis = list(range = list(0, 1), tickformat = ".0%", 
+                 title = "'Strong' or 'Some' Knowledge of Science"),
+    yaxis = list(range = list(0, 1), tickformat = ".0%",
+                 title = ""), 
+    legend = list(x = 0.85, y = 0.04, bordercolor = 'black',
+                       borderwidth = 2, font = list(size = 10))) %>%
+  add_trace(showlegend = FALSE, hovertemplate = 'Knowledge of Science: %{x} 
+Vaccine Effectiveness: %{y}
+%{text}')
+```
+
+
+
+The github with the source code can be found [here](https://github.com/LKantoro/lab-2).
 
