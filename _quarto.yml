@@ -1,13 +1,16 @@
 project:
   type: website
+  output-dir: docs
 
 website:
-  title: "PersonalWebsite"
+  title: "Lucas Kantorowski"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      - portfolio.qmd # add your listing page file to your navbar, just like you 
+                  # would any other new web page
 
 format:
   html:
@@ -16,6 +19,7 @@ format:
       - brand
     css: styles.css
     toc: true
+    page-layout: full
 
 editor: visual
 
