@@ -4,41 +4,41 @@
     "href": "portfolio.html",
     "title": "My Blog",
     "section": "",
-    "text": "Advanced Visualizations\n\n\n\nQuarto\n\nR\n\n\n\nblog post description (appears underneath the title in smaller text) which is included on the listing page\n\n\n\nLucas Kantorowski\n\n\nMay 5, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto Dashboards (Static)\n\n\n\nQuarto\n\nR\n\nMEDS\n\n\n\nblog post description (appears underneath the title in smaller text) which is included on the listing page\n\n\n\nLucas Kantorowski\n\n\nMay 5, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto Dashboards (Dynamic)\n\n\n\nQuarto\n\nR\n\nMEDS\n\n\n\nblog post description (appears underneath the title in smaller text) which is included on the listing page\n\n\n\nLucas Kantorowski\n\n\nMay 5, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Advanced Visualizations\n\n\n\nQuarto\n\nR\n\n\n\n3 Advanced VIsualizations. One in base R, one using plotly, one using Leaflet\n\n\n\nLucas Kantorowski\n\n\nMay 5, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto Dashboards (Static)\n\n\n\nQuarto\n\nR\n\n\n\nMy first dashboard created using R\n\n\n\nLucas Kantorowski\n\n\nMay 5, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto Dashboards (Dynamic)\n\n\n\nQuarto\n\nR\n\n\n\nDynamic Quarto dashboards using Shiny are relatively new. Here is my first one.\n\n\n\nLucas Kantorowski\n\n\nMay 5, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "portfolio/2025-05-02-second-post/index.html",
     "href": "portfolio/2025-05-02-second-post/index.html",
     "title": "Quarto Dashboards (Static)",
     "section": "",
-    "text": "CitationBibTeX citation:@online{kantorowski2025,\n  author = {Kantorowski, Lucas},\n  title = {Quarto {Dashboards} {(Static)}},\n  date = {2025-05-05},\n  url = {https://samanthacsik.github.io/posts/2025-05-02-my-blog-post/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nKantorowski, Lucas. 2025. “Quarto Dashboards (Static).” May\n5, 2025. https://samanthacsik.github.io/posts/2025-05-02-my-blog-post/."
+    "text": "Here is my first Quarto dashboard. It was created using the Wellcome 2018 data. It contains two pages, each featuring value cards and graphs about the data.\n\n\n\n\nThe github with the source code can be found here.\n\n\n\nCitationBibTeX citation:@online{kantorowski2025,\n  author = {Kantorowski, Lucas},\n  title = {Quarto {Dashboards} {(Static)}},\n  date = {2025-05-05},\n  url = {https://lkantoro.github.io/PersonalWebsite/portfolio/2025-05-02-second-post/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nKantorowski, Lucas. 2025. “Quarto Dashboards (Static).” May\n5, 2025. https://lkantoro.github.io/PersonalWebsite/portfolio/2025-05-02-second-post/."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Lucas Kantorowski",
     "section": "",
-    "text": "this is placeholder text about me"
+    "text": "Welcome to my website!"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "This is my first website. It’s posts contain my projects from my learning experience of STAT 541."
   },
   {
     "objectID": "portfolio/2025-05-02-first-post/index.html",
     "href": "portfolio/2025-05-02-first-post/index.html",
     "title": "Advanced Visualizations",
     "section": "",
-    "text": "CitationBibTeX citation:@online{kantorowski2025,\n  author = {Kantorowski, Lucas},\n  title = {Advanced {Visualizations}},\n  date = {2025-05-05},\n  url = {https://lkantoro.github.io/posts/2025-05-02-my-blog-post/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nKantorowski, Lucas. 2025. “Advanced Visualizations.” May 5,\n2025. https://lkantoro.github.io/posts/2025-05-02-my-blog-post/."
+    "text": "Here are some advanced visualizations created using the Wellcome 2018 data.\nThis is a faceted dotplot of belief in vaccine effectiveness, faceted by global region.\n\n\n\n\n\n\n\n\n\nAnother visualization created used leaflet to create a chloropleth. It focuses on the distribution in trust in science throughtout the world.\n\n\n\n\n\n\nFinally, I used plotly to create a nice labelled scatterplot to demonstrate the relationship between the belief vaccines are effective, and trust in science.\n\n\n\n\n\n\nThe github with the source code can be found here.\n\n\n\nCitationBibTeX citation:@online{kantorowski2025,\n  author = {Kantorowski, Lucas},\n  title = {Advanced {Visualizations}},\n  date = {2025-05-05},\n  url = {https://lkantoro.github.io/PersonalWebsite/portfolio/2025-05-02-first-post/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nKantorowski, Lucas. 2025. “Advanced Visualizations.” May 5,\n2025. https://lkantoro.github.io/PersonalWebsite/portfolio/2025-05-02-first-post/."
   },
   {
     "objectID": "portfolio/2025-05-02-third-post/index.html",
     "href": "portfolio/2025-05-02-third-post/index.html",
     "title": "Quarto Dashboards (Dynamic)",
     "section": "",
-    "text": "CitationBibTeX citation:@online{kantorowski2025,\n  author = {Kantorowski, Lucas},\n  title = {Quarto {Dashboards} {(Dynamic)}},\n  date = {2025-05-05},\n  url = {https://samanthacsik.github.io/posts/2025-05-02-my-blog-post/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nKantorowski, Lucas. 2025. “Quarto Dashboards (Dynamic).”\nMay 5, 2025. https://samanthacsik.github.io/posts/2025-05-02-my-blog-post/."
+    "text": "Here is my first dynamic quarto It was created using Wellcome 2018 data. Just like the static dashboard, it features two pages, each with a variety of graphs and value cards. Now, you have the ability to change the first-page value cards for comparison-sake, and change the number of grouping colors on the chloropleth.\n\n\n\n\nThe github with the source code can be found here.\n\n\n\nCitationBibTeX citation:@online{kantorowski2025,\n  author = {Kantorowski, Lucas},\n  title = {Quarto {Dashboards} {(Dynamic)}},\n  date = {2025-05-05},\n  url = {https://lkantoro.github.io/PersonalWebsite/portfolio/2025-05-02-third-post/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nKantorowski, Lucas. 2025. “Quarto Dashboards (Dynamic).”\nMay 5, 2025. https://lkantoro.github.io/PersonalWebsite/portfolio/2025-05-02-third-post/."
   }
 ]
