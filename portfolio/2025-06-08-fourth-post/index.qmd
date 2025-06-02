@@ -1,5 +1,5 @@
 ---
-title: "Code Efficiency and Advanced Functions"
+title: "Writing Efficient Functions"
 description: "Creating Efficient Custom Functions in R"
 author:
   - name: Lucas Kantorowski
