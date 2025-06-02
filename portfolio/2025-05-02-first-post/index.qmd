@@ -1,5 +1,5 @@
 ---
-title: "Advanced Visualizations"
+title: "Advanced Visualizations  TEST"
 description: "3 Advanced VIsualizations. One in base R, one using plotly, one using Leaflet"
 author:
   - name: Lucas Kantorowski
