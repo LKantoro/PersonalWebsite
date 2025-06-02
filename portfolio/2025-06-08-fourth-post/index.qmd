@@ -27,13 +27,9 @@ library(tidyverse)
 library(rlang)
 ```
 
+**1** The `rescale01()` function below performs a min-max scaling to standardize a numeric vector, but infinite values are left unchanged.
 
-**1** The `rescale01()` function below performs a min-max scaling to 
-standardize a numeric vector, but infinite values are left unchanged. 
-
-I rewrote `rescale01()` so that `-Inf` is mapped to 0, and `Inf` is mapped to 1.
-I utilized `case_when()` to accomplish this.
-
+I rewrote `rescale01()` so that `-Inf` is mapped to 0, and `Inf` is mapped to 1. I utilized `case_when()` to accomplish this.
 
 ```{r}
 #| label: question-1
@@ -65,7 +61,7 @@ rescale01 <- function(x) {
 #testing with NA values
 rescale01(c(1,2,3,4,5,6,NA,-7,8,Inf, NA))
 
-#testing with negative infinity and negative inifinity values
+#testing with negative infinity and negative infinity values
 rescale01(c(1,2,3,-Inf,5,6,NA,-7,8,Inf, NA))
 
 #testing with character values
@@ -78,6 +74,492 @@ rescale01(c(1))
 
 
 
+**Question 2:** Write a function that accepts a vector of birthdates and 
+computes the age of each person in years.
+
+```{r}
+#| label: question-2
+
+#using time_length function from lubridate package
+#https://stackoverflow.com/questions/15569333/get-date-difference-in-years-floating-point
+
+age_in_years = function(date_vect) {
+  #accounting fro if birthday vector is already provided in date format
+  if (class(date_vect) == "Date") {
+    return(time_length(difftime(Sys.Date(), date_vect), "years"))
+  }
+  
+  #calculate year difference between today and vector value
+  return(time_length(difftime(Sys.Date(), as.Date(date_vect)), "years"))
+
+}
+```
+
+```{r}
+#| eval: false
+
+#testing with expected input
+age_in_years(c("2001-01-01", "2021-01-30", "2013-08-20"))
 
 
+#testing with alternate date format
+age_in_years(c("01/01/2001", "2021/01/30"))
+
+
+#testing with alternate, unclear date format
+age_in_years(c("01/30/2001", "2021/01/30"))
+
+
+#testing with vector already in date format
+age_in_years(as.Date(c("01/01/2001", "2021/01/30"))
+)
+```
+
+**Question 3:** Write a function that computes the variance and skewness of a
+numeric vector. Feel free to look up the definitions on Wikipedia or elsewhere!
+
+```{r}
+#| label: question-3
+
+variance_and_skewness = function(num_vec){
+  
+  if (class(num_vec) != "numeric") {
+    stop("The provided vector is not numeric")
+  }
+  
+  
+  v_s_df = data.frame(Variance = var(num_vec, na.rm = TRUE), 
+                      Skewness = skewness(num_vec, na.rm = TRUE))
+  
+  return(v_s_df)
+}
+```
+
+```{r}
+#| eval: false
+
+#testing with normal vector
+variance_and_skewness(c(1,2,3,4,5,7,8,89,9,87,0))
+
+#testing with a character vector
+variance_and_skewness(c(1,2,3,4,5,7,8,89,9,87,'0'))
+
+#testing with a vector of length 1
+variance_and_skewness(c(1))
+
+#testing with NA values
+variance_and_skewness(c(1,2,3,4,5,NA,8,89,9,87))
+
+```
+
+**Question 4:** Write a function called `both_na()` which takes two vectors of
+the same length and returns the number of positions that have an `NA` in both
+vectors.
+
+
+```{r}
+both_na = function(vec1, vec2){
+  
+  #checking if columns are same length
+  if (length(vec1) != length(vec2)) {
+    stop("The provided vectors are not the same length")
+  }
+  
+  
+  #check for if a vector is non-numeric
+  if (class(vec1) != "numeric" | (class(vec2) != "numeric"))  {
+    stop("At least 1 provided vector is not numeric")
+  }
+  
+  
+  #adding up the NA status of column 1 and column 2, then filtering by col3 = 2
+  return(data.frame(vec1, vec1, 
+             row_num_nas = (is.na(vec1) + is.na(vec2))) %>% 
+    filter(row_num_nas == 2) %>% #  filtering by is.na(col1) + is.na(col2) = 2
+    summarise(N = n()) %>% as.numeric()) # counting number of columns with 2 NAs
+  
+  
+}
+#extract single value from 1x1 data frame: https://stackoverflow.com/questions/60864283/extract-the-single-value-from-a-1-x-1-data-frame-produced-with-dplyr-as-a-vector
+
+
+```
+
+```{r}
+#| eval: false
+
+#testing with basic input
+vec_a = c(NA,3,4,6, NA, NA, NA, 11, NA)
+vec_b = c(NA, NA, NA,3,4, 5,NA,3,5)
+both_na(vec_a, vec_b)
+
+
+#testing with 0 values
+vec_a = c(1,2,3,4,5,6)
+vec_b = c(64, 78, 456456, 88, 44, 29)
+both_na(vec_a, vec_b)
+
+
+#testing with 1 vector having character values
+vec_a = c(NA,NA,3,4,5,6)
+vec_b = c(NA, NA, NA, '2',3,4)
+both_na(vec_a, vec_b)
+
+
+#testing with different length vectors
+vec_a = c(NA,3,4,5,6)
+vec_b = c(NA, NA, NA, '2',3,4)
+both_na(vec_a, vec_b)
+
+```
+
+
+
+## Data Frame Functions
+
+**Question 5:** Insert the data frame function you wrote from Lab 6 (either
+Exercise 1 or Exercise 2). 
+
+```{r}
+#| label: function-from-lab-2
+
+impute_missing = function(df, ..., impute_fun = mean) {
+  # Check to verify function input is a function
+  if (!is.function(impute_fun)) {
+    stop("The input for `impute_fun` must be a function.")
+  }
+  
+  # Check for non-character columns (from live code functions.qmd)
+  character <- df %>%
+    select(...) %>%
+    map_lgl(~ (is.character(.x) | is.factor(.x))) %>%
+    keep(identity) %>%
+    names()
+  
+  if (length(character) > 0) {
+    stop("The following columns are characters: ",
+         str_c(character, collapse = ", "))
+  }
+
+  newdf = df %>% 
+    mutate(across(c(...), ~ replace_na(data = .x, 
+                                       replace = impute_fun(.x, na.rm = TRUE))))
+  return(newdf)
+
+}
+```
+
+```{r}
+#| eval: false
+
+#testing with 1 numeric column
+mean(nycflights13::flights$arr_delay, na.rm = TRUE)
+
+test1 = impute_missing(nycflights13::flights, 
+               arr_delay)
+
+test1 %>% select(arr_delay) %>% group_by(arr_delay) %>% 
+  summarise(N = n()) %>% arrange(desc(N)) %>% slice_head(n = 10)
+
+
+#testing with non-default function
+median(nycflights13::flights$arr_delay, na.rm = TRUE)
+
+test2 = impute_missing(nycflights13::flights, 
+               arr_delay, impute_fun = median)
+
+test2 %>% select(arr_delay) %>% group_by(arr_delay) %>% 
+  summarise(N = n()) %>% arrange(desc(N)) %>% slice_head(n = 10)
+
+
+#testing with 2 numeric columns
+test3 = impute_missing(nycflights13::flights, 
+               arr_delay, dep_delay)
+
+test3 %>% select(arr_delay) %>% group_by(arr_delay) %>% 
+  summarise(N = n()) %>% arrange(desc(N)) %>% slice_head(n = 10)
+
+test3 %>% select(dep_delay) %>% group_by(dep_delay) %>% 
+  summarise(N = n()) %>% arrange(desc(N)) %>% slice_head(n = 10)
+
+
+#testing with character column input
+impute_missing(nycflights13::flights,carrier)
+
+impute_missing(nycflights13::flights, 
+               arr_delay, dep_delay, carrier)
+
+
+#testing with non-real impute function
+impute_missing(nycflights13::flights, dep_delay, impute_fun = apple)
+
+```
+
+For Questions 6 - 10 you will write different functions which work with data 
+similar to the `nycflights13` data. 
+
+**Question 6:** Write a `filter_severe()` function that finds all flights that
+were cancelled (i.e. `is.na(arr_time)`) or delayed by more than an hour.
+
+```{r}
+#| label: question-6
+
+filter_severe = function(df = nycflights13::flights){
+  
+  #making sure dataset is similar to the flights data in format
+  if ('dep_delay' %in% colnames(df) == FALSE | 
+      'arr_time' %in% colnames(df) == FALSE){
+    stop("Dataset provided does not have desired column names")
+  }
+  
+  return(df %>% filter(is.na(arr_time) == TRUE | dep_delay > 60))
+}
+```
+
+```{r}
+#| eval: false
+
+#testing for normal inputs
+filter_severe(nycflights13::flights)
+
+
+#testing for unexpected dataframe
+filter_severe(mpg)
+
+```
+
+**Question 7:** Write a `summarize_severe()` function that counts the number of 
+cancelled flights and the number of flights delayed by more than an hour.
+
+```{r}
+#| label: question-7
+
+summarize_severe = function(df = nycflights13::flights){
+  #using previous function
+  #counting number of cancelled flights
+  #counting number of delayed flights by more than one hour
+  
+  return(filter_severe(df) %>% 
+           summarise(Cancelled = sum(is.na(arr_time)),
+                                         Delayed = sum(dep_time > 60, 
+                                                       na.rm = TRUE)))
+}
+```
+
+```{r}
+#| eval: false
+
+#testing expected input
+summarize_severe(nycflights13::flights)
+
+
+#testing function without necessary columns
+summarize_severe(mpg)
+
+```
+
+**Question 8:** Modify your `filter_severe()` function to allow the user to 
+supply the number of hours that should be used to filter the flights that were
+cancelled or delayed. 
+
+```{r}
+#| label: question-8
+
+filter_severe = function(df = nycflights13::flights, hours = 1){
+  #making sure dataset is similar in format to flights dataset
+  if ('dep_delay' %in% colnames(df) == FALSE | 
+      'arr_time' %in% colnames(df) == FALSE){
+    stop("Dataset provided does not have desired column names")
+  }
+  
+  #making sure a numeric argument is used for hours
+  if (class(hours) != 'numeric'){
+    stop("Please provide a numeric qunaitity for delay hours")
+  }
+  
+  return(df %>% filter(is.na(arr_time) == TRUE | dep_delay > hours * 60))
+}
+```
+
+```{r}
+#| eval: false
+
+#testing for normal inputs
+filter_severe(nycflights13::flights, 1)
+filter_severe(nycflights13::flights, 10)
+
+#testing for non-numeric delay
+filter_severe(nycflights13::flights, '1')
+
+
+#testing for unexpected dataframe
+filter_severe(mpg, 4)
+
+```
+
+**Question 9:** Write a `summarize_weather()` function that summarizes the
+weather to compute the minimum, mean, and maximum, of a user supplied variable. 
+
+```{r}
+#| label: question-9
+
+summarize_weather = function(df = nycflights13::flights, num_var){
+  #make sure variable is numeric
+  if (length(df %>% select({{num_var}}) %>% 
+             purrr::discard(~!is.numeric(.))) == 0){
+    stop('Please provide a numeric variable')
+  }
+  
+  return(df %>% select({{num_var}}) %>%
+            summarise(Minimum = min({{num_var}}, na.rm = TRUE),
+            Mean = mean({{num_var}}, na.rm = TRUE),
+            Maximum = max({{num_var}}, na.rm = TRUE)))
+}  
+```
+
+```{r}
+#| eval: false
+
+#testing with normal input
+summarize_weather(nycflights13::flights, dep_time)
+
+
+#testing with non-numeric column
+summarize_weather(nycflights13::flights, carrier)
+```
+
+**Question 10:** Write a `standardize_time()` function that converts the user
+supplied variable that uses clock time (e.g., `dep_time`, `arr_time`, etc.) into
+a decimal time (i.e. hours + (minutes / 60)).
+
+```{r}
+#| label: question-10
+
+standardize_time = function(df = nycflights13::flights, time_var){
+  #user supplied variable that uses clock time into decimal time
+  if (englue('{{time_var}}') %in% 
+      c('dep_time', 'sched_dep_time', 'arr_time', 'sched_arr_time') == FALSE){
+    stop("Please provide a clock time variable to summarize")
+  }
+  
+  return(df %>% 
+    mutate({{time_var}} := floor({{time_var}}/100) * 60 + {{time_var}} %% 100))
+}
+```
+
+
+```{r}
+#| eval: false
+
+#testing using expected input
+standardize_time(nycflights13::flights, arr_time)
+standardize_time(nycflights13::flights, sched_dep_time)
+
+#testing supplying a non-time column
+standardize_time(nycflights13::flights, day)
+```
+
+# Plotting Functions
+
+You might want to read over the [Plot Functions section of *R for Data Science*](https://r4ds.hadley.nz/functions.html#plot-functions)
+
+**Question 11:** Build a `sorted_bars()` function which:
+
+- takes a data frame and a variable as inputs and returns a **vertical** bar
+chart 
+- sorts the bars in decreasing order (largest to smallest)
+- adds a title that includes the context of the variable being plotted
+
+*Hint 1: The `fct_infreq()` and `fct_rev()` functions from the forcats package will be helpful for sorting the bars!*
+*Hint 2: The `englue()` function from the rlang package will be helpful for adding a variable's name into the plot title!*
+
+```{r}
+#| label: question-11
+
+sorted_bars <- function(df, var) {
+  
+  #checking to make sure input variable is categorical
+  if (length(df %>% select({{var}}) %>% purrr::discard(~is.numeric(.))) == 0){
+    stop('Please provide a categorical variable')
+  }
+  
+  #creating name object for label purposes
+  name = englue("{{ var }}")
+  
+  return(df %>% select({{var}}) %>% mutate({{var}} := fct_infreq({{var}})) %>% 
+    ggplot(aes(x = {{var}})) + 
+    ggtitle(paste("Distribution of", name, "(decreasing)")) + 
+    geom_bar())
+  
+}  
+```
+
+```{r}
+#| eval: false
+
+#keeping only numeric variables
+#https://stackoverflow.com/questions/5863097/selecting-only-numeric-columns-from-a-data-frame
+
+#testing using a expected input
+sorted_bars(nycflights13::flights, carrier)
+sorted_bars(mpg, trans)
+
+
+#testing using a numeric variable
+sorted_bars(nycflights13::flights, dep_delay)
+
+```
+
+# Iteration
+
+Alright, now let's take our plotting function and iterate it! 
+
+**Question 12:** Make a sorted barplot for every character variable in the `mpg`
+dataset (built into `ggplot2`). 
+
+```{r}
+#| label: question-12
+
+#could not get sorting to work with map function
+unsorted_bars <- function(df, var) {
+  
+  #checking to make sure input variable is categorical
+  if (length(df %>% select({{var}}) %>% purrr::discard(~is.numeric(.))) == 0){
+    stop('Please provide a categorical variable')
+  }
+  
+  #creating name object for label purposes
+  name = englue("{{ var }}")
+  
+  return(df %>% select({{var}}) %>% 
+    ggplot(aes(x = {{var}})) + 
+    ggtitle(paste("Distribution of", name, "(decreasing)")) + 
+    geom_bar())
+  
+}  
+```
+
+
+```{r}
+#| eval: false
+
+#barplots on all categorical variables of mpg
+mpg %>% purrr::discard(~is.numeric(.)) %>% 
+  names() %>% map(~unsorted_bars(df = mpg, var = .data[[.x]]))
+
+#use of .data[[.x]]
+#https://stackoverflow.com/questions/60305159/tunnel-data-variables-through-env-variable-with-operator
+
+```
+
+
+
+# Contributing to the R for Data Science Community!
+
+The functions you wrote for exercises 1-10 came from *R for Data Science*. You
+could consider making a pull request to the repository for the solutions! 
+
+<https://github.com/mine-cetinkaya-rundel/r4ds-solutions>
+
+To learn more about how to make a pull request I would suggest this article: <https://usethis.r-lib.org/articles/pr-functions.html>
 

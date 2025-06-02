@@ -10,13 +10,16 @@ author:
 date: 06-08-2025
 embed-resources: true
 warning: false
+image: Topo-Illogical.png
 categories: [Quarto, R] # self-defined categories
 citation: 
   url: https://lkantoro.github.io/PersonalWebsite/portfolio/2025-06-08-seventh-post/ 
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
+This is my first attempt at making art with R. Many of the functions used were from tutorials made by [Danielle Navarro](https://djnavarro.net/). To make the art, I utilized her functions, changing input parameters to fit my vision. Below I provide the code I used, the art piece with it's description, and my thought process behind the code choice.
 
+This first piece used base R functions. The functions used are from [this](https://art-from-code.netlify.app/day-1/session-1/) tutorial by Danielle.
 
 ```{r}
 library(ggplot2)
@@ -24,10 +27,9 @@ library(tibble)
 library(scales)
 library(ggthemes)
 library(dplyr)
-library(rayshader)
-library(tibble)
-library(ambient)
 ```
+
+
 
 ## Art Piece 1 Code
 
@@ -125,7 +127,11 @@ dat3 <- sample_data(n = 500, seed = 475) |>
 
 #using a color palette with a wider range of colors
 dat3 = dat3 %>% mutate(colors = sample_canva2(n = 500, seed = 99))
+```
 
+
+
+```{r}
 art1 = polar_styled_plot(palette = sample_canva(seed = 3)) + 
   geom_jitter(
     data = dat3 |> mutate(size = size * 2),
@@ -164,6 +170,12 @@ There are 3 sets of data used in the above art piece. The first data set (dat1) 
 The third set of data (dat3) is the colored points on the outside. The have larger coordinate values, and the sizes are generally larger than those of the second data set. I used a different Canva palette to create a contrast between the center and the outside. 500 points looked the best in my opinion. These points added a story, showing the process of what has happened, and is about to happen.
 
 ## Art Piece 2 Code
+
+
+```{r}
+library(rayshader)
+library(ambient)
+```
 
 ```{r}
 #Danielle's provided function
@@ -273,4 +285,3 @@ shaded_ice_floe(8)
 ```
 
 The main part of creating the above art piece is finding a good combination of color palette, generated terrain, and sun angle. Certain terrains go well with certain color palettes and vice versa. I eventually settled on Canva palette seed 8, as it featured colors that reminded me of heat maps. Ice floe seed 668 created a combination with the chosen color palette that created no sense of topological understanding to me. I chose to increase the sun altitude to 40, as I wanted to create a starker color contrast between the darker colors and lighter colors. The sun angle of 195 added to the overall goal of the piece.
-

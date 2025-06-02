@@ -9,12 +9,12 @@ author:
     affiliation-url: https://www.calpoly.edu/ 
 date: 06-08-2025
 embed-resources: true
+image: lab7.png
 categories: [Quarto, R] # self-defined categories
 citation: 
   url: https://lkantoro.github.io/PersonalWebsite/portfolio/2025-06-08-fifth-post/ 
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
-
 
 # Set up
 

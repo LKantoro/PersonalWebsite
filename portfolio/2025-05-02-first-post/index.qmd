@@ -1,5 +1,5 @@
 ---
-title: "Advanced Visualizations  TEST"
+title: "Advanced Visualizations"
 description: "3 Advanced VIsualizations. One in base R, one using plotly, one using Leaflet"
 author:
   - name: Lucas Kantorowski
@@ -14,8 +14,6 @@ citation:
 image: lab2.png
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
-
-
 
 Here are some advanced visualizations created using the [Wellcome 2018 data](https://wellcome.org/reports/wellcome-global-monitor/2018).
 
