@@ -1,0 +1,83 @@
+---
+title: "Code Efficiency and Advanced Functions"
+description: "Creating Efficient Custom Functions in R"
+author:
+  - name: Lucas Kantorowski
+    url: https://lkantoro.github.io/PersonalWebsite/
+    orcid: 0000-0002-5300-3075
+    affiliation: Master of Science Student in Statistics @ California Polytechnic State University
+    affiliation-url: https://www.calpoly.edu/ 
+date: 06-08-2025
+categories: [Quarto, R] # self-defined categories
+citation: 
+  url: https://lkantoro.github.io/PersonalWebsite/portfolio/2025-06-08-fourth-post/ 
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+---
+
+Here are some custom functions made in R. The first are pulled [*R for Data Science*](https://r4ds.hadley.nz/).
+
+Before I share my functions, I load in some necessary libraries.
+
+```{r}
+#| label: load_libraries
+library(lubridate)
+library(dplyr)
+library('e1071')
+library(tidyverse)
+library(rlang)
+```
+
+
+**1** The `rescale01()` function below performs a min-max scaling to 
+standardize a numeric vector, but infinite values are left unchanged. 
+
+I rewrote `rescale01()` so that `-Inf` is mapped to 0, and `Inf` is mapped to 1.
+I utilized `case_when()` to accomplish this.
+
+
+```{r}
+#| label: question-1
+
+
+rescale01 <- function(x) {
+  if (class(x) != "numeric") {
+    stop("The provided vector is not numeric")
+  }
+  
+  if (length(x) < 2) {
+    stop("The provided vector is less than length 2")
+  }
+  
+  rng <- range(x, na.rm = TRUE, finite = TRUE)
+  
+  #making negative infinite and infinite values the min and max, respectively
+  x = case_when(x == -Inf ~ rng[1], x == Inf ~ rng[2],.default = x)
+  
+  (x - rng[1]) / (rng[2] - rng[1])
+  
+  
+}
+```
+
+```{r}
+#| eval: false
+
+#testing with NA values
+rescale01(c(1,2,3,4,5,6,NA,-7,8,Inf, NA))
+
+#testing with negative infinity and negative inifinity values
+rescale01(c(1,2,3,-Inf,5,6,NA,-7,8,Inf, NA))
+
+#testing with character values
+rescale01(c(1,2,3,-Inf,5,'6',NA,-7,8,Inf, NA))
+
+#tseting with vector of length 1
+rescale01(c(1))
+
+```
+
+
+
+
+
+
