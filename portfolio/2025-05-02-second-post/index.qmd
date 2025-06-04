@@ -25,6 +25,4 @@ Here is my first Quarto dashboard. It was created using the [Wellcome 2018 data]
 
 </center>
 
-
 The github with the source code can be found [here](https://github.com/LKantoro/lab-3).
-

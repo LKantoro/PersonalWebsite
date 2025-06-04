@@ -14,7 +14,7 @@ citation:
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
-Here are some custom functions made in R. The first are pulled [*R for Data Science*](https://r4ds.hadley.nz/).
+Here are twelve custom functions made in R. The first ten are pulled [*R for Data Science*](https://r4ds.hadley.nz/). Each function is created and some common inputs are tested below.
 
 Before I share my functions, I load in some necessary libraries.
 
@@ -72,10 +72,7 @@ rescale01(c(1))
 
 ```
 
-
-
-**Question 2:** Write a function that accepts a vector of birthdates and 
-computes the age of each person in years.
+**2** Here is a function that accepts a vector of birthdates and computes the age of each person in years.
 
 ```{r}
 #| label: question-2
@@ -115,8 +112,7 @@ age_in_years(as.Date(c("01/01/2001", "2021/01/30"))
 )
 ```
 
-**Question 3:** Write a function that computes the variance and skewness of a
-numeric vector. Feel free to look up the definitions on Wikipedia or elsewhere!
+**3** Here is a function that computes the variance and skewness of a numeric vector.
 
 ```{r}
 #| label: question-3
@@ -152,10 +148,7 @@ variance_and_skewness(c(1,2,3,4,5,NA,8,89,9,87))
 
 ```
 
-**Question 4:** Write a function called `both_na()` which takes two vectors of
-the same length and returns the number of positions that have an `NA` in both
-vectors.
-
+**4** Here, `both_na()` takes two vectors of the same length and returns the number of positions that have an `NA` in both vectors.
 
 ```{r}
 both_na = function(vec1, vec2){
@@ -213,12 +206,11 @@ both_na(vec_a, vec_b)
 
 ```
 
-
-
 ## Data Frame Functions
 
-**Question 5:** Insert the data frame function you wrote from Lab 6 (either
-Exercise 1 or Exercise 2). 
+These are functions that take data frames as inputs.
+
+**5** This function replaces the NA values of a specified column with a value based on some function of the column. Users must provide the data frame, a numeric column of the data frame, and a function that works on numeric vectors.
 
 ```{r}
 #| label: function-from-lab-2
@@ -295,11 +287,10 @@ impute_missing(nycflights13::flights, dep_delay, impute_fun = apple)
 
 ```
 
-For Questions 6 - 10 you will write different functions which work with data 
-similar to the `nycflights13` data. 
 
-**Question 6:** Write a `filter_severe()` function that finds all flights that
-were cancelled (i.e. `is.na(arr_time)`) or delayed by more than an hour.
+The following function work with data similar to the `nycflights13` data.
+
+**6** `filter_severe()` finds all flights that were cancelled or delayed by more than an hour.
 
 ```{r}
 #| label: question-6
@@ -328,8 +319,7 @@ filter_severe(mpg)
 
 ```
 
-**Question 7:** Write a `summarize_severe()` function that counts the number of 
-cancelled flights and the number of flights delayed by more than an hour.
+**7** `summarize_severe()` counts the number of cancelled flights and the number of flights delayed by more than an hour.
 
 ```{r}
 #| label: question-7
@@ -358,9 +348,7 @@ summarize_severe(mpg)
 
 ```
 
-**Question 8:** Modify your `filter_severe()` function to allow the user to 
-supply the number of hours that should be used to filter the flights that were
-cancelled or delayed. 
+**8** Here, `filter_severe()` allows users to supply the number of hours that should be used to filter the flights that were cancelled or delayed.
 
 ```{r}
 #| label: question-8
@@ -397,8 +385,7 @@ filter_severe(mpg, 4)
 
 ```
 
-**Question 9:** Write a `summarize_weather()` function that summarizes the
-weather to compute the minimum, mean, and maximum, of a user supplied variable. 
+**9** The `summarize_weather()` function computes the minimum, mean, and maximum, of a user supplied variable.
 
 ```{r}
 #| label: question-9
@@ -428,9 +415,7 @@ summarize_weather(nycflights13::flights, dep_time)
 summarize_weather(nycflights13::flights, carrier)
 ```
 
-**Question 10:** Write a `standardize_time()` function that converts the user
-supplied variable that uses clock time (e.g., `dep_time`, `arr_time`, etc.) into
-a decimal time (i.e. hours + (minutes / 60)).
+**10** The `standardize_time()` function below converts a user supplied variable that uses clock time (e.g., `dep_time`, `arr_time`, etc.) into a decimal time (i.e. hours + (minutes / 60)).
 
 ```{r}
 #| label: question-10
@@ -447,7 +432,6 @@ standardize_time = function(df = nycflights13::flights, time_var){
 }
 ```
 
-
 ```{r}
 #| eval: false
 
@@ -461,17 +445,12 @@ standardize_time(nycflights13::flights, day)
 
 # Plotting Functions
 
-You might want to read over the [Plot Functions section of *R for Data Science*](https://r4ds.hadley.nz/functions.html#plot-functions)
+**11** The `sorted_bars()` function below:
 
-**Question 11:** Build a `sorted_bars()` function which:
+-   takes a data frame and a variable as inputs and returns a **vertical** bar chart
+-   sorts the bars in decreasing order (largest to smallest)
+-   adds a title that includes the context of the variable being plotted
 
-- takes a data frame and a variable as inputs and returns a **vertical** bar
-chart 
-- sorts the bars in decreasing order (largest to smallest)
-- adds a title that includes the context of the variable being plotted
-
-*Hint 1: The `fct_infreq()` and `fct_rev()` functions from the forcats package will be helpful for sorting the bars!*
-*Hint 2: The `englue()` function from the rlang package will be helpful for adding a variable's name into the plot title!*
 
 ```{r}
 #| label: question-11
@@ -512,10 +491,8 @@ sorted_bars(nycflights13::flights, dep_delay)
 
 # Iteration
 
-Alright, now let's take our plotting function and iterate it! 
 
-**Question 12:** Make a sorted barplot for every character variable in the `mpg`
-dataset (built into `ggplot2`). 
+**12:** Make a sorted barplot for every character variable in the `mpg` dataset (built into `ggplot2`).
 
 ```{r}
 #| label: question-12
@@ -539,7 +516,6 @@ unsorted_bars <- function(df, var) {
 }  
 ```
 
-
 ```{r}
 #| eval: false
 
@@ -552,14 +528,10 @@ mpg %>% purrr::discard(~is.numeric(.)) %>%
 
 ```
 
-
-
 # Contributing to the R for Data Science Community!
 
-The functions you wrote for exercises 1-10 came from *R for Data Science*. You
-could consider making a pull request to the repository for the solutions! 
+The functions you wrote for exercises 1-10 came from *R for Data Science*. You could consider making a pull request to the repository for the solutions!
 
 <https://github.com/mine-cetinkaya-rundel/r4ds-solutions>
 
 To learn more about how to make a pull request I would suggest this article: <https://usethis.r-lib.org/articles/pr-functions.html>
-
