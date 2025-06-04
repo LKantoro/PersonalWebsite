@@ -8,6 +8,7 @@ author:
     affiliation: Master of Science Student in Statistics @ California Polytechnic State University
     affiliation-url: https://www.calpoly.edu/ 
 date: 06-08-2025
+image: lab6.png
 categories: [Quarto, R] # self-defined categories
 citation: 
   url: https://lkantoro.github.io/PersonalWebsite/portfolio/2025-06-08-fourth-post/ 
@@ -27,7 +28,11 @@ library(tidyverse)
 library(rlang)
 ```
 
-**1** The `rescale01()` function below performs a min-max scaling to standardize a numeric vector, but infinite values are left unchanged.
+# Vector Functions
+
+## 1
+
+The `rescale01()` function below performs a min-max scaling to standardize a numeric vector, but infinite values are left unchanged.
 
 I rewrote `rescale01()` so that `-Inf` is mapped to 0, and `Inf` is mapped to 1. I utilized `case_when()` to accomplish this.
 
@@ -72,7 +77,9 @@ rescale01(c(1))
 
 ```
 
-**2** Here is a function that accepts a vector of birthdates and computes the age of each person in years.
+## 2
+
+Here is a function that accepts a vector of birthdates and computes the age of each person in years.
 
 ```{r}
 #| label: question-2
@@ -112,7 +119,9 @@ age_in_years(as.Date(c("01/01/2001", "2021/01/30"))
 )
 ```
 
-**3** Here is a function that computes the variance and skewness of a numeric vector.
+## 3
+
+Here is a function that computes the variance and skewness of a numeric vector.
 
 ```{r}
 #| label: question-3
@@ -148,7 +157,9 @@ variance_and_skewness(c(1,2,3,4,5,NA,8,89,9,87))
 
 ```
 
-**4** Here, `both_na()` takes two vectors of the same length and returns the number of positions that have an `NA` in both vectors.
+## 4
+
+Here, `both_na()` takes two vectors of the same length and returns the number of positions that have an `NA` in both vectors.
 
 ```{r}
 both_na = function(vec1, vec2){
@@ -206,11 +217,13 @@ both_na(vec_a, vec_b)
 
 ```
 
-## Data Frame Functions
+# Data Frame Functions
 
 These are functions that take data frames as inputs.
 
-**5** This function replaces the NA values of a specified column with a value based on some function of the column. Users must provide the data frame, a numeric column of the data frame, and a function that works on numeric vectors.
+## 5
+
+This function replaces the NA values of a specified column with a value based on some function of the column. Users must provide the data frame, a numeric column of the data frame, and a function that works on numeric vectors.
 
 ```{r}
 #| label: function-from-lab-2
@@ -289,7 +302,9 @@ impute_missing(nycflights13::flights, dep_delay, impute_fun = apple)
 
 The following function work with data similar to the `nycflights13` data.
 
-**6** `filter_severe()` finds all flights that were cancelled or delayed by more than an hour.
+## 6
+
+`filter_severe()` finds all flights that were cancelled or delayed by more than an hour.
 
 ```{r}
 #| label: question-6
@@ -318,7 +333,9 @@ filter_severe(mpg)
 
 ```
 
-**7** `summarize_severe()` counts the number of cancelled flights and the number of flights delayed by more than an hour.
+## 7
+
+`summarize_severe()` counts the number of cancelled flights and the number of flights delayed by more than an hour.
 
 ```{r}
 #| label: question-7
@@ -347,7 +364,9 @@ summarize_severe(mpg)
 
 ```
 
-**8** Here, `filter_severe()` allows users to supply the number of hours that should be used to filter the flights that were cancelled or delayed.
+## 8
+
+Here, `filter_severe()` allows users to supply the number of hours that should be used to filter the flights that were cancelled or delayed.
 
 ```{r}
 #| label: question-8
@@ -384,7 +403,9 @@ filter_severe(mpg, 4)
 
 ```
 
-**9** The `summarize_weather()` function computes the minimum, mean, and maximum, of a user supplied variable.
+## 9
+
+The `summarize_weather()` function computes the minimum, mean, and maximum, of a user supplied variable.
 
 ```{r}
 #| label: question-9
@@ -414,7 +435,9 @@ summarize_weather(nycflights13::flights, dep_time)
 summarize_weather(nycflights13::flights, carrier)
 ```
 
-**10** The `standardize_time()` function below converts a user supplied variable that uses clock time (e.g., `dep_time`, `arr_time`, etc.) into a decimal time (i.e. hours + (minutes / 60)).
+## 10
+
+The `standardize_time()` function below converts a user supplied variable that uses clock time (e.g., `dep_time`, `arr_time`, etc.) into a decimal time (i.e. hours + (minutes / 60)).
 
 ```{r}
 #| label: question-10
@@ -444,7 +467,9 @@ standardize_time(nycflights13::flights, day)
 
 # Plotting Functions
 
-**11** The `sorted_bars()` function below:
+## 11
+
+The `sorted_bars()` function below:
 
 -   takes a data frame and a variable as inputs and returns a **vertical** bar chart
 -   sorts the bars in decreasing order (largest to smallest)
@@ -489,7 +514,9 @@ sorted_bars(nycflights13::flights, dep_delay)
 
 # Iteration
 
-**12:** Make a sorted barplot for every character variable in the `mpg` dataset (built into `ggplot2`).
+## 12
+
+Make a sorted barplot for every character variable in the `mpg` dataset (built into `ggplot2`).
 
 ```{r}
 #| label: question-12

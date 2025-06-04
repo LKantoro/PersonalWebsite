@@ -17,6 +17,8 @@ draft: false # setting this to `true` will prevent your post from appearing on y
 
 Here is my first Quarto dashboard. It was created using the [Wellcome 2018 data](https://wellcome.org/reports/wellcome-global-monitor/2018). It contains two pages, each featuring value cards and graphs about the data.
 
+
+
 <center>
 
 <iframe src="https://lkantoro.quarto.pub/lucas-kantorowski/" frameborder="0" width="960" height="570" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
