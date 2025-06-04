@@ -287,7 +287,6 @@ impute_missing(nycflights13::flights, dep_delay, impute_fun = apple)
 
 ```
 
-
 The following function work with data similar to the `nycflights13` data.
 
 **6** `filter_severe()` finds all flights that were cancelled or delayed by more than an hour.
@@ -451,7 +450,6 @@ standardize_time(nycflights13::flights, day)
 -   sorts the bars in decreasing order (largest to smallest)
 -   adds a title that includes the context of the variable being plotted
 
-
 ```{r}
 #| label: question-11
 
@@ -490,7 +488,6 @@ sorted_bars(nycflights13::flights, dep_delay)
 ```
 
 # Iteration
-
 
 **12:** Make a sorted barplot for every character variable in the `mpg` dataset (built into `ggplot2`).
 
