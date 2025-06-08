@@ -225,7 +225,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">12</a></li>
   </ul></li>
-  <li><a href="#contributing-to-the-r-for-data-science-community" id="toc-contributing-to-the-r-for-data-science-community" class="nav-link" data-scroll-target="#contributing-to-the-r-for-data-science-community">Contributing to the R for Data Science Community!</a></li>
   </ul>
 </nav>
     </div>
@@ -704,7 +703,7 @@ The following objects are masked from 'package:purrr':
 <h1>Iteration</h1>
 <section id="section-11" class="level2">
 <h2 class="anchored" data-anchor-id="section-11">12</h2>
-<p>Make a sorted barplot for every character variable in the <code>mpg</code> dataset (built into <code>ggplot2</code>).</p>
+<p>Ideally I would want to create a sorted barplot for every character variable in the <code>mpg</code> dataset. However, I failed to get the sorting to work properly.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#could not get sorting to work with map function</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>unsorted_bars <span class="ot">&lt;-</span> <span class="cf">function</span>(df, var) {</span>
@@ -732,15 +731,10 @@ The following objects are masked from 'package:purrr':
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">#use of .data[[.x]]</span></span>
 <span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co">#https://stackoverflow.com/questions/60305159/tunnel-data-variables-through-env-variable-with-operator</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-</section>
-<section id="contributing-to-the-r-for-data-science-community" class="level1">
-<h1>Contributing to the R for Data Science Community!</h1>
-<p>The functions you wrote for exercises 1-10 came from <em>R for Data Science</em>. You could consider making a pull request to the repository for the solutions!</p>
-<p><a href="https://github.com/mine-cetinkaya-rundel/r4ds-solutions" class="uri">https://github.com/mine-cetinkaya-rundel/r4ds-solutions</a></p>
-<p>To learn more about how to make a pull request I would suggest this article: <a href="https://usethis.r-lib.org/articles/pr-functions.html" class="uri">https://usethis.r-lib.org/articles/pr-functions.html</a></p>
+<p>The GitHub with the source code can be found <a href="https://github.com/LKantoro/lab-6">here</a>.</p>
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{kantorowski2025,

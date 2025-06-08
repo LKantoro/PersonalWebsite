@@ -516,7 +516,7 @@ sorted_bars(nycflights13::flights, dep_delay)
 
 ## 12
 
-Make a sorted barplot for every character variable in the `mpg` dataset (built into `ggplot2`).
+Ideally I would want to create a sorted barplot for every character variable in the `mpg` dataset. However, I failed to get the sorting to work properly.
 
 ```{r}
 #| label: question-12
@@ -552,10 +552,4 @@ mpg %>% purrr::discard(~is.numeric(.)) %>%
 
 ```
 
-# Contributing to the R for Data Science Community!
-
-The functions you wrote for exercises 1-10 came from *R for Data Science*. You could consider making a pull request to the repository for the solutions!
-
-<https://github.com/mine-cetinkaya-rundel/r4ds-solutions>
-
-To learn more about how to make a pull request I would suggest this article: <https://usethis.r-lib.org/articles/pr-functions.html>
+The GitHub with the source code can be found [here](https://github.com/LKantoro/lab-6).

@@ -15,8 +15,6 @@ image: lab4.png
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
-
-
 Here is my first dynamic quarto It was created using [Wellcome 2018 data](https://wellcome.org/reports/wellcome-global-monitor/2018). Just like the static dashboard, it features two pages, each with a variety of graphs and value cards. Now, you have the ability to change the first-page value cards for comparison-sake, and change the number of grouping colors on the chloropleth.
 
 <center>
@@ -27,7 +25,4 @@ Here is my first dynamic quarto It was created using [Wellcome 2018 data](https:
 
 </center>
 
-
-The github with the source code can be found [here](https://github.com/LKantoro/lab-4).
-
-
+The GitHub with the source code can be found [here](https://github.com/LKantoro/lab-4).

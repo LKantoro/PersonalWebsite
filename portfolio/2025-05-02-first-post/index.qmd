@@ -79,6 +79,9 @@ want_to_know_more_science = read_csv(here::here("data", "want_to_know_more_scien
 wgm2018_full_new2 = read_csv(here::here("data", "wgm2018_full_new2.csv")) 
 ```
 
+
+# Base R, Faceted Dotplot
+
 This is a faceted dotplot of belief in vaccine effectiveness, faceted by global region.
 
 ```{r}
@@ -126,6 +129,8 @@ chloroplethdf = right_join(percent_trust, world_sf,
 chloroplethdf = st_sf(chloroplethdf)
 ```
 
+# Leaflet
+
 Another visualization created used leaflet to create a chloropleth. It focuses on the distribution in trust in science throughtout the world.
 
 ```{r}
@@ -154,7 +159,11 @@ leaflet(chloroplethdf) %>% addTiles() %>%
   setView(lng = 0, lat = 0, zoom = 2) 
 ```
 
+# Plotly Graph
+
+
 Finally, I used plotly to create a nice labelled scatterplot to demonstrate the relationship between the belief vaccines are effective, and trust in science.
+
 
 ```{r}
 #| echo: false
@@ -180,4 +189,4 @@ Vaccine Effectiveness: %{y}
 %{text}')
 ```
 
-The github with the source code can be found [here](https://github.com/LKantoro/lab-2).
+The GitHub with the source code, including the data cleaning and calculations, can be found [here](https://github.com/LKantoro/lab-2).

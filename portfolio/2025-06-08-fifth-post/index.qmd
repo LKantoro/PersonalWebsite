@@ -16,7 +16,9 @@ citation:
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
-# Set up
+In this blog, two of my classmates and I worked together to fetch data on U.S. state capital longitude and latitude locations, and International Space Station (ISS) pass times. We used this data to show the order of upcoming ISS of U.S. state capitals.
+
+# Set up (Loading in Libraries)
 
 ```{r}
 #| label: packages
@@ -34,7 +36,7 @@ library(leaflet)
 library(htmltools)
 ```
 
-# Question 1
+# Step 1: Finding Upcoming ISS Pass Times for U.S. Capitals Based on Longitude and Latitude
 
 ```{r}
 # read in capital lat and long
@@ -94,7 +96,7 @@ ISS_data <- ISS_data |>
 ISS_data = ISS_data |> pivot_wider(names_from = PassNumber, values_from = PassTime, names_prefix = "Pass")
 ```
 
-# Question 2 US State Capitols
+# Step 2: Mapping and Labelling US State Capitols
 
 ```{r}
 leaflet(data = capitals) |>
@@ -107,7 +109,7 @@ leaflet(data = capitals) |>
   )
 ```
 
-# Question 3 Icon
+# Step 3: Adding a Nice Icon to Fit the Theme
 
 ```{r}
 icon <- makeIcon(
@@ -128,7 +130,7 @@ leaflet(data = capitals) |>
   )
 ```
 
-# Question 4
+# Step 4: Adding ISS Pass Time Labels to U.S. State Capitals
 
 ```{r}
 
@@ -158,7 +160,7 @@ leaflet(data = ISS_data) |>
 
 ```
 
-# Question 5
+# Step 5: Adding Lines to Show the Order of Pass Times
 
 ```{r}
 
@@ -183,3 +185,5 @@ leaflet(data = ISS_data) |>
 
 
 ```
+
+The GitHub with the source code can be found [here](https://github.com/jgarc521/lab-7).

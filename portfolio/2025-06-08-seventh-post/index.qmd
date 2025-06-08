@@ -54,6 +54,8 @@ sample_canva2 <- function(seed = NULL, n = 4) {
 
 ```
 
+This function creates sample data.
+
 ```{r}
 #Danielle's provided function
 #loading in sample data
@@ -71,6 +73,8 @@ sample_data <- function(seed = NULL, n = 100){
 }
 
 ```
+
+This function makes lines and shapes be defined by polar coordinates instead of Cartesian coordinates.
 
 ```{r}
 #Danielle's provided function
@@ -174,9 +178,7 @@ The third set of data (dat3) is the colored points on the outside. The have larg
 
 ## Art Piece 2 Code
 
-My second art piece uses generative packages in R.
-
-First I load in the necessary libraries.
+My second art piece uses generative packages in R. The functions defined below are part of the rayshader and ambient package. Descriptions for the following functions can be found in [Danielle's post](https://art-from-code.netlify.app/day-1/session-4/).
 
 ```{r}
 library(rayshader)
@@ -291,3 +293,5 @@ shaded_ice_floe(8)
 ```
 
 The main part of creating the above art piece is finding a good combination of color palette, generated terrain, and sun angle. Certain terrains go well with certain color palettes and vice versa. I eventually settled on Canva palette seed 8, as it featured colors that reminded me of heat maps. Ice floe seed 668 created a combination with the chosen color palette that created no sense of topological understanding to me. I chose to increase the sun altitude to 40, as I wanted to create a starker color contrast between the darker colors and lighter colors. The sun angle of 195 added to the overall goal of the piece.
+
+The GitHub with the source code can be found [here](https://github.com/LKantoro/lab-9).
