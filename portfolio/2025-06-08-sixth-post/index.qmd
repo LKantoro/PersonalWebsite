@@ -319,7 +319,7 @@ cheese_info = bind_rows(map(cheese_list, get_cheese_info))
 
 ```
 
-Part 6
+# Part 6
 
 Below, we evaluate our code in terms of efficiency and it's limits. We answer the following questions?
 
