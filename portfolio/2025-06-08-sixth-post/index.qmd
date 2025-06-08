@@ -17,7 +17,7 @@ citation:
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
-In this post, two of my classmates and myself practiced webscraping in R by extracting cheese data from <https://www.cheese.com>. We extracted cheese names and cheese characteristics.
+In this post, two of my classmates and I practiced webscraping in R by extracting cheese data from <https://www.cheese.com>. We extracted cheese names and cheese characteristics.
 
 # Part 1
 
@@ -31,7 +31,7 @@ The `robots.txt` file for a website can be found by adding `/robots.txt` to the 
 
 -   The lack of a 'Disallow" section means that there are no scraping restrictions on specific areas of the cheese website.
 
-# Part 2 
+# Part 2
 
 Here is some information about the `html_attr()` function from `rvest`, including a small example.
 
@@ -156,7 +156,6 @@ The following code is written by Jose to obtain the following information for **
 -   URL for the cheese's webpage (e.g., <https://www.cheese.com/gouda/>)
 -   whether or not the cheese has a picture (e.g., [gouda](https://www.cheese.com/gouda/) has a picture, but [bianco](https://www.cheese.com/bianco/) does not).
 
-
 ```{r}
 library(stringr)
 library(rvest)
@@ -236,7 +235,6 @@ Here we extracted information from individual cheese pages. The following code r
 -   family
 -   type
 -   flavour
-
 
 ```{r}
 library(stringr)
@@ -321,13 +319,13 @@ cheese_info = bind_rows(map(cheese_list, get_cheese_info))
 
 ```
 
-Part 6 
+Part 6
 
 Below, we evaluate our code in terms of efficiency and it's limits. We answer the following questions?
 
-- To what extent do our function(s) adhere to the **principles for writing good functions**?
-- To what extent are our **functions efficient**? 
-- To what extent is our **iteration of these functions efficient**?
+-   To what extent do our function(s) adhere to the **principles for writing good functions**?
+-   To what extent are our **functions efficient**?
+-   To what extent is our **iteration of these functions efficient**?
 
 **Efficiency:**
 

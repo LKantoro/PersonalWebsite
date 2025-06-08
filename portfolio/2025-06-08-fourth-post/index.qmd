@@ -21,6 +21,8 @@ Before I share my functions, I load in some necessary libraries.
 
 ```{r}
 #| label: load_libraries
+#| message: false
+
 library(lubridate)
 library(dplyr)
 library('e1071')

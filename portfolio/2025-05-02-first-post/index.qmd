@@ -79,7 +79,6 @@ want_to_know_more_science = read_csv(here::here("data", "want_to_know_more_scien
 wgm2018_full_new2 = read_csv(here::here("data", "wgm2018_full_new2.csv")) 
 ```
 
-
 # Base R, Faceted Dotplot
 
 This is a faceted dotplot of belief in vaccine effectiveness, faceted by global region.
@@ -161,9 +160,7 @@ leaflet(chloroplethdf) %>% addTiles() %>%
 
 # Plotly Graph
 
-
 Finally, I used plotly to create a nice labelled scatterplot to demonstrate the relationship between the belief vaccines are effective, and trust in science.
-
 
 ```{r}
 #| echo: false
